@@ -12,7 +12,6 @@ interface for creating, managing, and running programs within a sandbox.
 Simply run `sandy` followed by the command you wish to run inside a
 sandbox.
 
-## Profiles
 Sandbox configurations are declared through **profiles**. `sandy` comes with some default
 profiles you can pick from or you can create your own. By default, `sandy` stores all profiles inside `~/.config/sandy/profiles`. Alternatively, you can pass a file path as an argument to specify which profile you'd like to use.
 
@@ -22,7 +21,7 @@ profiles are written in YAML which are then translated to SBPL when `sandy` is
 ran. This makes for an easier to read configuration file while still being
 extensible.
 
-## sandy API
+## API
 `sandy` also includes an API for running processes within a sandbox inside your own programs.
 
 ## Roadmap
