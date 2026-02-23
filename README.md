@@ -1,4 +1,4 @@
-<h1 align="center">sandy</h1>
+<h1 align="center">sandy 🏖️</h1>
 <p align="center">Run macOS programs in a sandbox.</p>
 
 ## Description
