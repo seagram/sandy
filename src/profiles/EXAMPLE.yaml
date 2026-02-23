@@ -1,0 +1,121 @@
+default: deny
+
+allow:
+    file:
+        # Path specifiers
+        # - all
+        # - literal: <path>
+        # - regex: <pattern>
+        # - subpath: <prefix>
+                               # Example:
+        - all                  # (allow file*)
+        - literal: /tmp/a      # (allow file* (literal "/tmp/a"))
+        - regex: /tmp/b        # (allow file* (regex "/tmp/b"))
+        - subpath: /tmp/c      # (allow file* (subpath "/tmp/c"))
+
+        - chroot: all
+        - chroot:
+            - literal: /tmp/a
+            - regex: /tmp/b
+            - subpath: /tmp/c
+
+        - ioctl: all
+        - ioctl:
+            - literal: /tmp/a
+
+        - revoke: all
+
+        - read:
+            - all
+            - literal: /tmp/a
+            - data: all
+            - data:
+                - literal: /tmp/a
+                - subpath: /tmp/c
+            - metadata: all
+            - xattr: all
+
+        - write:
+            - all
+            - data: all
+            - flags: all
+            - mode: all
+            - mount: all
+            - owner: all
+            - setugid: all
+            - times: all
+            - unmount: all
+            - xattr: all
+
+    ipc:
+        - all
+        - posix:
+            - all
+            - sem: all
+            - shm: all
+        - sysv:
+            - all
+            - msg: all
+            - sem: all
+            - shm: all
+        - mach:
+            - all
+            - bootstrap: all
+            - lookup: all
+            - task-name: all
+            - priv:
+                - all
+                - host-post: all
+                - task-port: all
+
+    network:
+        # Protocol qualifiers:
+        # - tcp / tcp4 / tcp6
+        # - udp / udp4 / udp6
+        # - ip / ip4 / ip6
+        # - unix
+        - all
+        - inbound: all
+        - inbound:              # (allow network-inbound ...) — with protocol qualifiers
+            - tcp: "*:8080"
+            - udp: "*:1234"
+        - outbound:
+            - tcp: "*:443"
+        - bind: all
+
+    process:
+        - all
+        - exec: all
+        - exec:
+            - literal: /usr/bin/foo
+        - fork: all
+
+    sec:
+        - send-signal: all
+        - signal: all
+        - job-creation: all
+        - mach-per-user-lookup: all
+        - sysctl:
+            - all
+            - read: all
+            - write: all
+        - system:
+            - all
+            - acct: all
+            - audit: all
+            - fsctl: all
+            - lcid: all
+            - mac-label: all
+            - nfssvc: all
+            - reboot: all
+            - set-time: all
+            - socket: all
+            - swap: all
+            - write-bootstrap: all
+
+deny:
+    # Same structure as allow:
+
+# `with` modifier — applicable to any rule:
+# - with: report     (allow but log)
+# - with: no-report  (suppress logging)
