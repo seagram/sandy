@@ -14,3 +14,6 @@ List of resources used for the development of `sandy`.
 
 ## YAML
 - [YAML Spec](https://yaml.org/spec/1.2.2/)
+
+## POSIX Spawn
+[posix_spawn iOS Manual Page](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/posix_spawn.2.html)
