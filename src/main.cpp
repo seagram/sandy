@@ -18,8 +18,11 @@ public:
   const posix_spawnattr_t *attrp;
   const char **envp;
   const char **argv;
-  PosixSpawn() {} // TODO
-  int exec() {}   // TODO
+  PosixSpawn() {
+    pid = 0;
+    file_actions = NULL;
+  } // TODO
+  int exec() {} // TODO
 };
 
 int main(int argc, char *argv[]) {
